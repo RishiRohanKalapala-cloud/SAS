@@ -31,7 +31,7 @@ const ServiceCard = ({ title, description, number, variant = 'default' }) => {
 };
 
 
-// --- Main Services Section Component ---
+// --- Main Services Section Component (With Mobile Background Update) ---
 
 const Services = () => {
   const servicesData = [
@@ -72,28 +72,26 @@ const Services = () => {
             </p>
           </div>
 
-          <div className="relative rounded-2xl overflow-hidden">
+          {/* --- UPDATED: Container now handles responsive background --- */}
+          <div className="relative rounded-2xl overflow-hidden bg-white md:bg-transparent">
             
-            {/* Background Image Layer */}
+            {/* --- UPDATED: Background Image Layer is now hidden on mobile --- */}
             <div
-              className="absolute inset-0 z-0"
+              className="absolute inset-0 z-0 hidden md:block" // Hidden by default, shown on medium screens up
               style={{
                 backgroundImage: "url('https://i.postimg.cc/T1LsdkG5/Untitled-design-22.png')",
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
               }}
             />
-
-            {/* --- NEW: Overlay Layer for Blending Effect --- */}
-            {/* This div sits on top of the image to darken it, making it "blend in". */}
         
-
             {/* Content Layer (Cards) - Sits on top of the image and overlay */}
             <div className="relative z-10 flex flex-col gap-8 p-8 md:p-12">
               {servicesData.map((service, index) => (
                 <div
                   key={service.title}
-                  className={`w-full flex ${index % 2 === 1 ? 'md:justify-end' : 'md-justify-start'}`}
+                  // --- FIX: Corrected typo from md-justify-start to md:justify-start ---
+                  className={`w-full flex ${index % 2 === 1 ? 'md:justify-end' : 'md:justify-start'}`}
                 >
                   <div className="w-full md:w-1/2">
                     <ServiceCard
