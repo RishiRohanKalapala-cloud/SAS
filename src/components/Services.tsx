@@ -1,7 +1,6 @@
 import React from 'react';
 
 // --- Reusable ServiceCard Component (No changes here) ---
-
 const ServiceCard = ({ title, description, number, variant = 'default' }) => {
   const isPrimary = variant === 'primary';
 
@@ -59,52 +58,54 @@ const Services = () => {
   ];
 
   return (
-    // UPDATED: Section is now relative for background image positioning
-    <section id="services" className="relative py-20">
-      
-      {/* Background Image Layer */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: "url('https://i.postimg.cc/9Q3DFvmw/Untitled-design-20.png')", // Replace with your desired image URL
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      />
-      
-      {/* Background Overlay Layer */}
-   
-
-      {/* Content Layer (must have a higher z-index) */}
-      <div className="relative z-20 container mx-auto px-6">
+    <section id="services" className="py-20 bg-gray-50">
+      <div className="container mx-auto px-6">
         <div className="max-w-7xl mx-auto">
+          
           {/* Section Header */}
           <div className="max-w-3xl mb-12 text-left">
-            <h2 className="text-4xl md:text-5xl font-bold">
+            <h2 className="text-4xl md:text-5xl font-bold text-black">
               What We Do
             </h2>
-            <p className="mt-4 text-base md:text-lg text-muted-foreground">
+            <p className="mt-4 text-base md:text-lg text-gray-600">
               End-to-end execution from strategy to production. Designed to move quickly and deliver outcomes.
             </p>
           </div>
 
-          {/* Layout container */}
-          <div className="flex flex-col gap-8">
-            {servicesData.map((service, index) => (
-              <div
-                key={service.title}
-                className={`w-full flex ${index % 2 === 1 ? 'md:justify-end' : 'md:justify-start'}`}
-              >
-                <div className="w-full md:w-1/2">
-                  <ServiceCard
-                    title={service.title}
-                    description={service.description}
-                    number={index + 1}
-                    variant={index % 2 === 1 ? "primary" : "default"}
-                  />
+          <div className="relative rounded-2xl overflow-hidden">
+            
+            {/* Background Image Layer */}
+            <div
+              className="absolute inset-0 z-0"
+              style={{
+                backgroundImage: "url('https://i.postimg.cc/T1LsdkG5/Untitled-design-22.png')",
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+              }}
+            />
+
+            {/* --- NEW: Overlay Layer for Blending Effect --- */}
+            {/* This div sits on top of the image to darken it, making it "blend in". */}
+        
+
+            {/* Content Layer (Cards) - Sits on top of the image and overlay */}
+            <div className="relative z-10 flex flex-col gap-8 p-8 md:p-12">
+              {servicesData.map((service, index) => (
+                <div
+                  key={service.title}
+                  className={`w-full flex ${index % 2 === 1 ? 'md:justify-end' : 'md-justify-start'}`}
+                >
+                  <div className="w-full md:w-1/2">
+                    <ServiceCard
+                      title={service.title}
+                      description={service.description}
+                      number={index + 1}
+                      variant={index % 2 === 1 ? "primary" : "default"}
+                    />
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>
