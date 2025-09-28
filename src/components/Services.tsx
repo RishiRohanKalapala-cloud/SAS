@@ -31,35 +31,38 @@ const ServiceCard = ({ title, description, number, variant = 'default' }) => {
 };
 
 
-// --- Main Services Section Component (With Mobile Background Update) ---
+// --- Main Services Section Component (With Refined Sizing and Spacing) ---
 
 const Services = () => {
   const servicesData = [
     {
-      title: "Storytelling at Scale",
-      description: "We shape clear, resonant narratives people remember — and act on. From launch messaging to ongoing series.",
+      title: "Content Research ",
+      description: "We dive into your story, industry, and audience.",
     },
     {
-      title: "Content Strategy",
-      description: "Positioning, pillars, calendars, and distribution maps that keep you consistent and effective.",
+      title: "Script Writing ",
+      description: "Founder-first scripts that reflect your voice.",
     },
     {
-      title: "Digital Campaigns",
-      description: "Cross-channel concepts that break through the noise and deliver measurable impact.",
+      title: "Shooting (Optional)",
+      description: " Record with us or self-shoot with our guidance.",
     },
     {
-      title: "Creative Production",
-      description: "Video, design, and copy with fast turnarounds and high polish.",
+      title: "Editing ",
+      description: "Engaging shorts designed to stop the scroll.",
     },
     {
-      title: "Performance Creative",
-      description: "Test-and-learn assets optimized for CPC, CTR, and ROAS across paid channels.",
+      title: "Posting & Analysis",
+      description: "Posting & Analysis → Consistency + performance insights for growth.",
     }
   ];
 
   return (
-    <section id="services" className="py-20 bg-gray-50">
-      <div className="container mx-auto px-6">
+    // Section spacing: Consistent vertical padding for the entire section.
+    <section id="services" className="py-20 sm:py-24 bg-gray-50">
+      {/* Container: Centers content and sets max-width and horizontal padding. */}
+      <div className="container mx-auto px-6 lg:px-8">
+        {/* Content Wrapper: Constrains the section's content to a max-width for readability. */}
         <div className="max-w-7xl mx-auto">
           
           {/* Section Header */}
@@ -68,31 +71,36 @@ const Services = () => {
               What We Do
             </h2>
             <p className="mt-4 text-base md:text-lg text-gray-600">
-              End-to-end execution from strategy to production. Designed to move quickly and deliver outcomes.
+            End-to-end storytelling for founders.
+            From research to posting, we take care of the entire process so you can focus on building your business.
             </p>
           </div>
 
-          {/* --- UPDATED: Container now handles responsive background --- */}
           <div className="relative rounded-2xl overflow-hidden bg-white md:bg-transparent">
             
-            {/* --- UPDATED: Background Image Layer is now hidden on mobile --- */}
             <div
-              className="absolute inset-0 z-0 hidden md:block" // Hidden by default, shown on medium screens up
+              className="absolute inset-0 z-0 hidden md:block"
               style={{
-                backgroundImage: "url('https://i.postimg.cc/T1LsdkG5/Untitled-design-22.png')",
+                backgroundImage: "url('https://i.postimg.cc/d0BHtXf8/Untitled-design-24.png')",
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
               }}
             />
         
-            {/* Content Layer (Cards) - Sits on top of the image and overlay */}
-            <div className="relative z-10 flex flex-col gap-8 p-8 md:p-12">
+            {/* --- Cards Container: Manages padding and the gap between cards. --- */}
+            {/* Responsive padding (p-6) is smaller on mobile, larger on desktop (md:p-12). */}
+            {/* `gap-8` ensures consistent vertical spacing between all cards. */}
+            <div className="relative z-10 flex flex-col gap-8 p-6 md:p-12">
               {servicesData.map((service, index) => (
+                // --- Row Wrapper: This container is always full-width. ---
+                // It uses flexbox to align its child (the card) to the start or end.
                 <div
                   key={service.title}
-                  // --- FIX: Corrected typo from md-justify-start to md:justify-start ---
                   className={`w-full flex ${index % 2 === 1 ? 'md:justify-end' : 'md:justify-start'}`}
                 >
+                  {/* --- Sized Card Container: THIS is what controls the card's width. --- */}
+                  {/* `w-full` makes it full-width on mobile. */}
+                  {/* `md:w-1/2` makes ALL cards exactly 50% width of the parent on desktop, ensuring perfect size consistency. */}
                   <div className="w-full md:w-1/2">
                     <ServiceCard
                       title={service.title}
