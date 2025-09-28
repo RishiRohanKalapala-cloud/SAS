@@ -38,15 +38,20 @@ const Intro = () => {
 
           {/* Grid Layout */}
           <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-10 lg:gap-8 p-8 pt-0 md:p-12 md:pt-0 lg:pt-12">
-            {/* Left: Content */}
+            {/* --- UPDATED: Left Content --- */}
             <div className="relative z-10 text-left lg:order-1 order-2">
+              {/* Headline */}
               <h2
-                className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-snug"
+                className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight"
                 style={{ textShadow: '0 2px 20px rgba(0,0,0,0.3)' }}
               >
-                Strategy-first content. <br />
-                <span className="text-white">Creative that performs.</span>
+                The system behind the stories.
               </h2>
+
+              {/* Body Copy */}
+              <p className="mt-6 text-lg md:text-xl text-white/90 max-w-lg">
+                Every founder has stories worth sharing. The challenge is turning them into content that actually reaches people.
+              </p>
 
               {/* Button */}
               <div className="mt-8">
