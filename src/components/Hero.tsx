@@ -1,14 +1,36 @@
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Menu } from "lucide-react";
 import { Sheet, SheetTrigger, SheetContent, SheetClose } from "@/components/ui/sheet";
 
 const Hero = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Set isScrolled to true if user has scrolled more than 50px
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    // Add scroll event listener when the component mounts
+    window.addEventListener("scroll", handleScroll);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <section
@@ -18,8 +40,12 @@ const Hero = () => {
         backgroundImage: "url('https://i.ibb.co/20XWpB3P/Untitled-design-8.png')",
       }}
     >
-      {/* Floating rounded navbar */}
-      <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95vw] max-w-7xl">
+      {/* Floating rounded navbar with dynamic width */}
+      <nav 
+        className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 ease-in-out ${
+          isScrolled ? "w-[90vw] max-w-6xl" : "w-[95vw] max-w-7xl"
+        }`}
+      >
         <div className="flex items-center justify-between rounded-full border border-blue-600/20 bg-white/80 dark:bg-zinc-900/60 backdrop-blur-md px-3 md:px-6 py-2 md:py-3 shadow-lg">
           {/* Left: Site name */}
           <div className="flex items-center gap-3 flex-1 min-w-0">
