@@ -1,80 +1,76 @@
-import { Button } from "@/components/ui/button";
+import React from 'react';
+import { Facebook, Instagram, Twitter, Linkedin, Youtube } from "lucide-react";
+
+const GiantTextBackground = () => {
+  return (
+    <div className="absolute inset-0 z-0 flex items-center justify-center overflow-hidden pointer-events-none">
+      <div className="whitespace-nowrap capitalize font-extrabold text-[60px] md:text-[120px] xl:text-[220px] tracking-tighter text-black/5 leading-none -mb-4 md:-mb-8 xl:-mb-20">
+        stories at scale
+      </div>
+    </div>
+  );
+};
 
 const Footer = () => {
   return (
-    <footer className="relative bg-[#f5f3ef] pt-24 pb-12 overflow-hidden font-sans">
-      {/* Slanted blue background shape */}
-      <div 
-        className="absolute top-0 left-0 w-full h-full bg-blue-600"
-        style={{ clipPath: 'polygon(0 15%, 100% 0, 100% 100%, 0% 100%)' }}
-      ></div>
+    // UPDATED: Vertical padding increased from py-12 to py-20 to add height
+    <footer className="relative bg-white py-20 px-8 overflow-hidden">
+      <GiantTextBackground />
 
-      {/* Main Content Card */}
-      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* --- Placeholder Comment --- */}
-        {/* Add your character illustrations with absolute positioning here */}
-        {/* Example: <img src="/character1.svg" className="absolute top-[-5rem] left-1/4 w-32 z-10" /> */}
-        
-        <div className="relative bg-white rounded-3xl border-[4px] border-blue-600 p-8 md:p-12">
-          {/* Top Section: Links and CTA */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            
-            {/* Link Columns - now spans wider to fill the space */}
-            <div className="lg:col-span-9 grid grid-cols-2 sm:grid-cols-3 gap-8">
-              <div className="space-y-3">
-                <h4 className="font-bold text-black">Company</h4>
-                <ul className="space-y-2">
-                  <li><a href="#" className="text-sm text-gray-700 hover:text-black transition-colors">nbout Us</a></li>
-                  <li><a href="#" className="text-sm text-gray-700 hover:text-black transition-colors">How it works</a></li>
-                  <li><a href="#" className="text-sm text-gray-700 hover:text-black transition-colors">Careers</a></li>
-                  <li><a href="#" className="text-sm text-gray-700 hover:text-black transition-colors">Help</a></li>
-                </ul>
-              </div>
-              <div className="space-y-3">
-                <h4 className="font-bold text-black">Social Media</h4>
-                <ul className="space-y-2">
-                  <li><a href="#" className="text-sm text-gray-700 hover:text-black transition-colors">Discord</a></li>
-                  <li><a href="#" className="text-sm text-gray-700 hover:text-black transition-colors">Twitter</a></li>
-                  <li><a href="#" className="text-sm text-gray-700 hover:text-black transition-colors">LinkedIn</a></li>
-                </ul>
-              </div>
-              <div className="space-y-3">
-                <h4 className="font-bold text-black">Contact</h4>
-                <ul className="space-y-2">
-                  <li>
-                    <a href="mailto:hello@storiesatscale.in" className="text-sm text-gray-700 hover:text-black transition-colors break-all">
-                      hello@storiesatscale.in
-                    </a>
-                  </li>
-                  <li>
-                    <a href="tel:+917425882688" className="text-sm text-gray-700 hover:text-black transition-colors">
-                      +91 7425882688
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            {/* CTA Button */}
-            <div className="lg:col-span-3 flex justify-start lg:justify-end">
-              <Button variant="outline" className="bg-white border-2 border-black rounded-lg px-6 py-2 text-base font-semibold hover:bg-gray-100 transition-colors">
-                Contact us
-              </Button>
-            </div>
+      <div className="relative z-10 max-w-7xl mx-auto">
+        {/* Top Row: Logo, Nav Links, Social Icons */}
+        <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-8">
+          <div className="text-2xl font-bold text-black">
+            Stories at Scale
           </div>
           
-          {/* Bottom Section: Copyright */}
-          <div className="border-t border-gray-200 mt-12 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <div className="text-center sm:text-left">
-              <p className="text-sm font-semibold text-gray-800">© 2024 Stories at Scale</p>
-              <p className="text-xs text-gray-500">Creative Storytelling Agency</p>
-            </div>
-            <a href="#" className="text-sm font-semibold text-gray-800 hover:text-black transition-colors">Help & Support</a>
+          <nav className="flex items-center flex-wrap justify-center gap-x-8 gap-y-4">
+            <a href="#services" className="text-black hover:text-gray-600 transition-colors">
+              Services
+            </a>
+            <a href="#about" className="text-black hover:text-gray-600 transition-colors">
+              About
+            </a>
+            <a href="#contact" className="text-black hover:text-gray-600 transition-colors">
+              Contact
+            </a>
+          </nav>
+          
+          <div className="flex items-center space-x-4">
+            <a href="#" aria-label="Facebook" className="text-black hover:text-gray-600 transition-colors">
+              <Facebook className="w-5 h-5" />
+            </a>
+            <a href="#" aria-label="Instagram" className="text-black hover:text-gray-600 transition-colors">
+              <Instagram className="w-5 h-5" />
+            </a>
+            <a href="#" aria-label="Twitter" className="text-black hover:text-gray-600 transition-colors">
+              <Twitter className="w-5 h-5" />
+            </a>
+            <a href="#" aria-label="LinkedIn" className="text-black hover:text-gray-600 transition-colors">
+              <Linkedin className="w-5 h-5" />
+            </a>
+            <a href="#" aria-label="Youtube" className="text-black hover:text-gray-600 transition-colors">
+              <Youtube className="w-5 h-5" />
+            </a>
           </div>
-
-          {/* --- Placeholder Comment --- */}
-          {/* Add another character peeking from the bottom right */}
-          {/* Example: <img src="/character2.svg" className="absolute bottom-[-2rem] right-[-1rem] w-24" /> */}
+        </div>
+        
+        {/* Bottom Row: Copyright and Legal Links */}
+        <div className="border-t border-gray-200 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-gray-500 text-sm text-center md:text-left">
+              © 2024 Stories at Scale. All rights reserved.
+            </p>
+            
+            <div className="flex space-x-6">
+              <a href="#" className="text-gray-500 hover:text-black text-sm transition-colors">
+                Privacy Policy
+              </a>
+              <a href="#" className="text-gray-500 hover:text-black text-sm transition-colors">
+                Terms of Service
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
