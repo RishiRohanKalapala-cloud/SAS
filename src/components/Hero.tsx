@@ -41,9 +41,9 @@ const Hero = () => {
       }}
     >
       {/* Floating rounded navbar with dynamic width */}
-      <nav 
+      <nav
         className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 ease-in-out ${
-          isScrolled ? "w-[90vw] max-w-6xl" : "w-[95vw] max-w-7xl"
+          isScrolled ? "w-[80vw] max-w-4xl" : "w-[85vw] max-w-5xl"
         }`}
       >
         <div className="flex items-center justify-between rounded-full border border-blue-600/20 bg-white/80 dark:bg-zinc-900/60 backdrop-blur-md px-3 md:px-6 py-2 md:py-3 shadow-lg">
@@ -92,20 +92,20 @@ const Hero = () => {
           </div>
         </div>
       </nav>
-      
+
       {/* Content wrapper */}
       <div className="relative flex-1 flex items-center justify-center px-6 md:px-12 lg:px-20">
         <div className="max-w-4xl text-center">
           {/* Main Heading */}
-          <h1 
+          <h1
             className="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight text-foreground"
             style={{ textShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)' }}
           >
             <span className="text-blue-600">Stories</span> that <span className="text-blue-600">Scale</span>
           </h1>
-          
+
           {/* Sub Heading */}
-          <p 
+          <p
             className="mt-4 text-xl md:text-2xl lg:text-3xl font-semibold text-foreground/90"
             style={{ textShadow: '0px 2px 8px rgba(0, 0, 0, 0.1)' }}
           >
@@ -119,8 +119,8 @@ const Hero = () => {
 
           {/* Button container */}
           <div className="mt-10 flex items-center justify-center">
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               onClick={() => scrollToSection("contact")}
               className="px-8 py-6 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
             >
