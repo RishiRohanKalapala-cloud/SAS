@@ -66,7 +66,7 @@ const Services = () => {
       <div
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: "url('https://i.postimg.cc/KjyWYGHV/Untitled-design-19.png')", // Replace with your desired image URL
+          backgroundImage: "url('https://i.postimg.cc/9Q3DFvmw/Untitled-design-20.png')", // Replace with your desired image URL
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
