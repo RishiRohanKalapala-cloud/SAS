@@ -1,11 +1,9 @@
 import Hero from "@/components/Hero";
-
 import Services from "@/components/Services";
 import Intro from "@/components/Intro";
 import Testimonials from "@/components/Testimonials";
 import SocialProof from "@/components/SocialProof";
 import FinalCTA from "@/components/FinalCTA";
-import Contact from "@/components/Contact";
 import ChatBot from "@/components/ChatBot";
 import Footer from "@/components/Footer";
 
@@ -25,9 +23,6 @@ const Index = () => {
       </section>
       
       <FinalCTA />
-      <section id="contact">
-        <Contact />
-      </section>
       <ChatBot />
 
       {/* Rounded-edge footer */}
