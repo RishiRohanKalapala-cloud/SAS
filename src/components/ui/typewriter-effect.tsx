@@ -64,10 +64,8 @@ export const TypewriterEffect = ({
   );
 
   return (
-    // --- UPDATED: Increased mobile font size ---
     <div
       className={cn(
-        // The first class `text-3xl` is the new, larger mobile default.
         "text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center",
         className
       )}
@@ -81,7 +79,6 @@ export const TypewriterEffect = ({
           repeat: Infinity,
           repeatType: "reverse",
         }}
-        // --- UPDATED: Adjusted cursor height to match larger mobile fonts ---
         className={cn(
           "inline-block rounded-sm w-[4px] h-8 md:h-10 lg:h-12 bg-blue-500",
           cursorClassName
@@ -127,7 +124,8 @@ export const TypewriterEffectSmooth = ({
   );
 
   return (
-    <div className={cn("flex space-x-2 my-6", className)}>
+    // --- UPDATED: Reduced vertical margin from my-4 to my-2 ---
+    <div className={cn("flex space-x-2 my-2", className)}>
       <motion.div
         className="overflow-hidden pb-2"
         initial={{ width: "0%" }}
@@ -138,9 +136,7 @@ export const TypewriterEffectSmooth = ({
           delay: 1,
         }}
       >
-        {/* --- UPDATED: Increased mobile font size and corrected typo --- */}
         <div
-          // `text-2xl` is the new mobile default, up from `text-xs`.
           className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold"
           style={{ whiteSpace: "nowrap" }}
         >
@@ -155,7 +151,6 @@ export const TypewriterEffectSmooth = ({
           repeat: Infinity,
           repeatType: "reverse",
         }}
-        // --- UPDATED: Adjusted cursor height for larger mobile fonts ---
         className={cn(
           "block rounded-sm w-[4px] h-8 sm:h-10 xl:h-12 bg-blue-500",
           cursorClassName
