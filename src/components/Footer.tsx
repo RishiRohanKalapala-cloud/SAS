@@ -13,7 +13,6 @@ const GiantTextBackground = () => {
 
 const Footer = () => {
   return (
-    // UPDATED: Vertical padding increased from py-12 to py-20 to add height
     <footer className="relative bg-white py-20 px-8 overflow-hidden">
       <GiantTextBackground />
 
@@ -25,6 +24,9 @@ const Footer = () => {
           </div>
           
           <nav className="flex items-center flex-wrap justify-center gap-x-8 gap-y-4">
+            <a href="#Home" className="text-black hover:text-gray-600 transition-colors">
+              Home
+            </a>
             <a href="#services" className="text-black hover:text-gray-600 transition-colors">
               Services
             </a>
@@ -55,13 +57,25 @@ const Footer = () => {
           </div>
         </div>
         
-        {/* Bottom Row: Copyright and Legal Links */}
+        {/* --- UPDATED: Bottom Row now includes contact info --- */}
         <div className="border-t border-gray-200 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-gray-500 text-sm text-center md:text-left">
-              © 2024 Stories at Scale. All rights reserved.
-            </p>
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6 md:gap-4">
+            {/* Left Side: Copyright and Contact Details */}
+            <div className="flex flex-col items-center md:items-start gap-4 text-center md:text-left">
+              <p className="text-gray-500 text-sm">
+                © 2024 Stories at Scale. All rights reserved.
+              </p>
+              {/* Contact Info */}
+              <div className="flex flex-wrap justify-center md:justify-start gap-x-4 gap-y-2 text-sm text-gray-500">
+                <a href="mailto:hello@storiesatscale.in" className="hover:text-black transition-colors">hello@storiesatscale.in</a>
+                <span className="hidden sm:inline">|</span>
+                <a href="tel:+91 7425882688" className="hover:text-black transition-colors">+91 7425882688</a>
+                <span className="hidden sm:inline">|</span>
+                <a href="#" className="hover:text-black transition-colors">@storiesatscale</a>
+              </div>
+            </div>
             
+            {/* Right Side: Legal Links */}
             <div className="flex space-x-6">
               <a href="#" className="text-gray-500 hover:text-black text-sm transition-colors">
                 Privacy Policy
