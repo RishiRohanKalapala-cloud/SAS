@@ -1,80 +1,75 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 
 const Intro = () => {
+  const [offsetY, setOffsetY] = useState(0);
+  const handleScroll = () => setOffsetY(window.scrollY);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <section id="about" className="py-20 sm:py-28 bg-secondary">
+    // The section now has decorative blurred shapes with parallax scroll
+    <section id="about" className="relative overflow-hidden py-20 sm:py-28 mb-12 lg:mb-0">
+      {/* Background Shapes with Parallax Effect */}
+      <div aria-hidden="true" className="absolute inset-0 z-[-1]">
+        <div
+          className="absolute top-0 -left-1/4 w-96 h-96 bg-blue-500/30 rounded-full filter blur-3xl opacity-50 animate-blob"
+          style={{ transform: `translateY(${offsetY * 0.2}px)` }} // Parallax
+        />
+        <div
+          className="absolute bottom-0 -right-1/4 w-96 h-96 bg-cyan-400/30 rounded-full filter blur-3xl opacity-50 animate-blob animation-delay-4000"
+          style={{ transform: `translateY(${offsetY * 0.1}px)` }} // Parallax
+        />
+      </div>
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          {/* New layout: Left content + Right visuals */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-
-            {/* Left: Copy */}
-            <div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-blue-600/30 bg-blue-600/10 text-blue-700 px-3 py-1 text-xs md:text-sm font-medium mb-4">
-                About us
-              </div>
-              <h2 className="text-4xl md:text-5xl font-bold">
-                Strategy-first content. Creative that performs.
-              </h2>
-              <p className="mt-4 text-base md:text-lg text-muted-foreground max-w-2xl">
-                We partner with founders and teams to clarify the message, build a repeatable content engine, and ship work that wins attention and trust.
-              </p>
-              <ul className="mt-6 space-y-3 text-sm md:text-base text-foreground/90">
-                <li className="flex items-start gap-2"><span className="mt-1 h-2 w-2 rounded-full bg-blue-600" /> Narrative and positioning workshops</li>
-                <li className="flex items-start gap-2"><span className="mt-1 h-2 w-2 rounded-full bg-blue-600" /> Content systems for scale (pillars, calendars, playbooks)</li>
-                <li className="flex items-start gap-2"><span className="mt-1 h-2 w-2 rounded-full bg-blue-600" /> Full-stack production: video, design, copy</li>
-              </ul>
-              <div className="mt-7 flex items-center gap-3">
-                <Button size="lg" onClick={() => {
-                  const el = document.getElementById('contact');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                }}>Start a project</Button>
-                <Button variant="outline" size="lg" onClick={() => {
-                  const el = document.getElementById('services');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                }}>See services</Button>
-              </div>
-            </div>
-
-            {/* Right: Visuals */}
-            <div className="relative">
-              {/* Accent shapes */}
-              <div className="absolute -top-6 -left-6 w-24 h-24 rounded-full bg-blue-500/20 ring-2 ring-blue-600/30" />
-              <div className="absolute -bottom-8 -right-8 w-40 h-20 rounded-t-full bg-blue-600/20 ring-2 ring-blue-700/30" />
-
-              {/* Founder card */}
-              <div className="relative bg-background rounded-3xl border border-border shadow-sm p-6 md:p-8">
-                <div className="flex items-center gap-4">
-                  <img
-                    src="https://media.licdn.com/dms/image/v2/D4D03AQEfqX3WxkyiRQ/profile-displayphoto-shrink_200_200/B4DZNm4nv9HIAY-/0/1732597940656?e=2147483647&v=beta&t=aF_J5aJrs0dlbGXHDJ538P9Xi3GjdJ2Qw5dcOD6m51s"
-                    alt="Harshith Tunuguntla, Founder of Stories at Scale"
-                    className="w-16 h-16 md:w-20 md:h-20 object-cover rounded-full ring-4 ring-blue-600"
-                  />
-                  <div>
-                    <div className="text-xl font-semibold">Harshith Tunuguntla</div>
-                    <div className="text-sm text-muted-foreground">Founder & Chief Storyteller</div>
-                  </div>
-                </div>
-
-                <blockquote className="mt-6 text-lg md:text-xl font-medium text-foreground">
-                  "Your company builds products. We build your <span className="text-blue-600 font-semibold">influence</span>."
-                </blockquote>
-
-                {/* Mini stats */}
-                <div className="mt-6 grid grid-cols-2 gap-3">
-                  <div className="rounded-2xl bg-blue-600 text-white p-4">
-                    <div className="text-2xl font-bold">50+ </div>
-                    <div className="text-xs opacity-90">projects shipped</div>
-                  </div>
-                  <div className="rounded-2xl bg-blue-500 text-white p-4">
-                    <div className="text-2xl font-bold">6 yrs</div>
-                    <div className="text-xs opacity-90">team experience</div>
-                  </div>
+        {/* Wrapper for the Animated Gradient Border */}
+        <div className="relative rounded-3xl p-px bg-gradient-to-br from-blue-500 via-cyan-400 to-purple-500 animate-gradient-spin">
+          
+          {/* Main Blue Glass Container */}
+          <div className="relative pt-24 lg:pt-8 rounded-[calc(1.5rem-1px)] bg-blue-900/40 backdrop-blur-2xl border border-white/10 shadow-2xl">
+            
+            {/* Subtle noise pattern */}
+            <div className="absolute inset-0 w-full h-full z-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: `url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800"><rect fill="white" width="800" height="800"/><g fill-rule="evenodd"><circle fill="%23000" cx="400" cy="400" r="1"/><circle fill="%23000" cx="400" cy="400" r="1"/></g></svg>')`}} />
+            
+            {/* Grid Layout */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-10 lg:gap-8 p-8 pt-0 md:p-12 md:pt-0 lg:pt-12">
+              
+              {/* Left: Content */}
+              <div className="relative z-10 text-left lg:order-1 order-2">
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-snug" style={{ textShadow: '0 2px 20px rgba(0,0,0,0.3)' }}>
+                  Strategy-first content. <br />
+                  <span className="text-cyan-300">Creative that performs.</span>
+                </h2>
+                
+                {/* Button with Glow Effect */}
+                <div className="mt-8 relative inline-block">
+                  <Button 
+                    size="lg" 
+                    className="relative z-10 rounded-full bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 text-lg border-2 border-blue-500 shadow-lg transition-transform duration-300 ease-in-out hover:scale-105"
+                  >
+                    Book a Strategy Call
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                  {/* The Glow */}
+                  <div className="absolute -inset-2 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full blur-lg opacity-60 animate-pulse z-0" />
                 </div>
               </div>
-            </div>
 
+              {/* Right: Visuals Container (Image Only) */}
+              <div className="relative lg:absolute lg:top-0 lg:right-0 lg:h-full lg:w-1/2 lg:order-2 order-1">
+                <img
+                  src="https://cdn.prod.website-files.com/5e51c674258ffe10d286d30a/5e535ae064109d61f102506b_peep-79.svg"
+                  alt="Harshith Tunuguntla, Founder of Stories at Scale"
+                  className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[115%] w-auto max-w-none object-contain z-10"
+                />
+              </div>
+              
+            </div>
           </div>
         </div>
       </div>
